@@ -1,6 +1,6 @@
 baseURL: "https://example.org/"
 languageCode: "en-us"
-title: "HiTime Airport Company"
+title: "My Porfolio"
 enableEmoji: true
 
 markup:
@@ -45,6 +45,10 @@ menus:
       name: "Contact"
       url: "/contact"
       weight: 300
+    - identifier: Coffeeshop
+      name: Coffeeshop
+      url: /coffeeshop
+      weight: 400
 
   footer:
     - identifier: "About"

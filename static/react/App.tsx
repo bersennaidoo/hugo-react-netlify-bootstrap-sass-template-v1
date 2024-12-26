@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"
-import Header from "./components/blocks/Header/Header";
-import ThumbnailContainer from "./components/features/CoffeeShop/ThumbnailContainer/ThumbnailContainer";
+import {
+  createBrowserRouter,
+  // createRoutesFromElements,
+  RouterProvider,
+  // Route,
+} from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import RootLayout from './RootLayout';
+
+// const routeDefinitions = createRoutesFromElements(
+//   <Route>
+//     <Route path="/" element={<HomePage />} />
+//     <Route path="/products" element={<ProductsPage />} />
+//   </Route>
+// );
+
+const router = createBrowserRouter([
+  {
+    path: '/coffeeshop',
+    element: <RootLayout />,
+    children: [
+      { path: '/coffeeshop', element: <HomePage /> },
+    ],
+  }
+]);
+
+// const router = createBrowserRouter(routeDefinitions);
 
 function App() {
-
-  const [items, setItems] = useState([])
-
-  useEffect(() => {
-    axios.get("/api/items")
-    .then((result) => setItems(result.data))
-    .catch(console.error)
-  }, [])
-
-  return (
-    <div className="pt-5 mt-5">
-      <Header />
-      <ThumbnailContainer items={items} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
